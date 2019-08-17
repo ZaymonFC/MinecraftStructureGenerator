@@ -1,6 +1,14 @@
-﻿// Learn more about F# at http://fsharp.org
 
-open System
+module Minecraft =
+    type Coord = { x: int; y: int; z: int }
+
+    type State = string
+
+    type Block = {
+        Coord :Coord
+        Kind  :string
+        State :State option
+    }
 
 [<EntryPoint>]
 let main argv =
