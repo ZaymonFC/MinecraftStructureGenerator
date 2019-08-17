@@ -1,6 +1,31 @@
-﻿// Learn more about F# at http://fsharp.org
 
-open System
+module Minecraft =
+    type Coord = { x: int; y: int; z: int }
+
+    type Kind =
+        | Cobblestone
+        | Air
+        | Dirt
+    with
+        override this.ToString () =
+            match this with
+            | Cobblestone -> "cobblestone"
+            | Air -> "air"
+            | Dirt -> "dirt"
+
+    type State = string
+
+    type Block = {
+        Coord :Coord
+        Kind  :Kind
+        State :State option
+    }
+
+    type Blocks = { UnBlocks: Block list }
+
+    let mapBlocks : (Block -> Block) -> Blocks -> Blocks = fun f blocks ->
+        { UnBlocks = blocks.UnBlocks |> List.map f }
+
 
 [<EntryPoint>]
 let main argv =
