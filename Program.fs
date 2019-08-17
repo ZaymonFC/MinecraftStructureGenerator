@@ -2,11 +2,22 @@
 module Minecraft =
     type Coord = { x: int; y: int; z: int }
 
+    type Kind =
+        | Cobblestone
+        | Air
+        | Dirt
+    with
+        override this.ToString () =
+            match this with
+            | Cobblestone -> "cobblestone"
+            | Air -> "air"
+            | Dirt -> "dirt"
+
     type State = string
 
     type Block = {
         Coord :Coord
-        Kind  :string
+        Kind  :Kind
         State :State option
     }
 
