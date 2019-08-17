@@ -21,6 +21,12 @@ module Minecraft =
         State :State option
     }
 
+    type Blocks = { UnBlocks: Block list }
+
+    let mapBlocks : (Block -> Block) -> Blocks -> Blocks = fun f blocks ->
+        { UnBlocks = blocks.UnBlocks |> List.map f }
+
+
 [<EntryPoint>]
 let main argv =
     printfn "Hello World from F#!"
