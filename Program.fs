@@ -1,4 +1,4 @@
-
+﻿
 module Minecraft =
     type Coord = { x: int; y: int; z: int }
 
@@ -26,6 +26,8 @@ module Minecraft =
     let mapBlocks : (Block -> Block) -> Blocks -> Blocks = fun f blocks ->
         { UnBlocks = blocks.UnBlocks |> List.map f }
 
+    let makeBlocks : Coord list -> Kind -> Block list = fun coords kind ->
+        coords |> List.map (fun x -> { Coord = x; Kind = kind; State = None })
 
 [<EntryPoint>]
 let main argv =
