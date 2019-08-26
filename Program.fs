@@ -23,11 +23,15 @@ module Minecraft =
 
     type Blocks = { UnBlocks: Block list }
 
-    let mapBlocks : (Block -> Block) -> Blocks -> Blocks = fun f blocks ->
-        { UnBlocks = blocks.UnBlocks |> List.map f }
+    module Blocks =
+        let zero : unit -> Blocks = fun _ ->
+            { UnBlocks = [{ Coord = {x = 0; y = 0; z = 0; }; Kind = Air; State = None }]}
 
-    let makeBlocks : Coord list -> Kind -> Block list = fun coords kind ->
-        coords |> List.map (fun x -> { Coord = x; Kind = kind; State = None })
+        let mapBlocks : (Block -> Block) -> Blocks -> Blocks = fun f blocks ->
+            { UnBlocks = blocks.UnBlocks |> List.map f }
+
+        let makeBlocks : Coord list -> Kind -> Block list = fun coords kind ->
+            coords |> List.map (fun x -> { Coord = x; Kind = kind; State = None })
 
 [<EntryPoint>]
 let main argv =
