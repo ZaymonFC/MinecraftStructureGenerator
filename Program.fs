@@ -1,6 +1,10 @@
-﻿
+﻿open FSharpPlus.Lens
+
 module Minecraft =
     type Coord = { x: int; y: int; z: int }
+    let inline _x f { x = a; y = b; z = c } = f a <&> fun a' -> { x = a'; y = b; z = c }
+    let inline _y f { x = a; y = b; z = c } = f b <&> fun b' -> { x = a; y = b'; z = c }
+    let inline _z f { x = a; y = b; z = c } = f c <&> fun c' -> { x = a; y = b; z = c' }
 
     type Kind =
         | Cobblestone
@@ -20,6 +24,9 @@ module Minecraft =
         Kind  :Kind
         State :State option
     }
+    let inline _coord f { Coord = a; Kind = b; State = c } = f a <&> fun a' -> { Coord = a'; Kind = b; State = c }
+    let inline _kind  f { Coord = a; Kind = b; State = c } = f b <&> fun b' -> { Coord = a; Kind = b'; State = c }
+    let inline _state f { Coord = a; Kind = b; State = c } = f c <&> fun c' -> { Coord = a; Kind = b; State = c' }
 
     type Blocks = { UnBlocks: Block list }
 
