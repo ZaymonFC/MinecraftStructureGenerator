@@ -6,7 +6,7 @@ open Model
 type Command = Command of string
 type CommandStream = CommandStream of string
 
-type ICommandCompiler = Blocks -> Command list
-type ICommandFormatter = Command list -> CommandStream
+type CommandCompiler = Blocks -> Command list
+type CommandFormatter = Command list -> CommandStream
 
-type IWriter = CommandStream -> unit IO
+type Writer = CommandStream -> unit IO
