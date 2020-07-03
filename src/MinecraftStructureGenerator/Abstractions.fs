@@ -11,4 +11,6 @@ type CommandStream = Command list
 type Commandify = Block -> Command
 type Streamify = Command -> CommandStream
 
+type CommandFile = string
+
 type Writer = CommandStream -> unit Async

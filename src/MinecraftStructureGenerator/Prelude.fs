@@ -2,6 +2,7 @@
 module Minecraft.Prelude
 
 type 't IO = 't Async
+type FilePath = string
 
 module String =
     let lines delimeter (s: string) : string list =

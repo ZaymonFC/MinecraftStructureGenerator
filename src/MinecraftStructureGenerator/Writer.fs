@@ -19,10 +19,9 @@ module CommandCompiler =
                 block.Coord.z
                 (block.Kind |> string)
             |> Command
-    let blocksToCommandStream = (List.map createCommand) << blocks
-    let formatForFile = String.unlines << (map unCommand)
 
+    let blocksToCommandStream = (List.map createCommand) << blocks
+    let formatForFile : Command list -> CommandFile = String.unlines << (map unCommand)
     let blocksToFileOutput = formatForFile << blocksToCommandStream
 
-    let writeCommands (filePath: string) (c: CommandStream) : unit Async =
-        async { return () }
+    let writeCommands : FilePath -> CommandFile -> unit IO = File.writeAsync
