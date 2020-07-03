@@ -1,6 +1,7 @@
 [<AutoOpen>]
 module Minecraft.Prelude
-open System
+
+type 't IO = 't Async
 
 module String =
     let lines delimeter (s: string) : string list =
@@ -8,4 +9,3 @@ module String =
 
     let unlines =
         List.reduce (fun (s1: string) (s2: string) -> sprintf "%s\n%s" s1 s2)
-
