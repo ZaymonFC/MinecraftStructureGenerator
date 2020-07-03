@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>netcoreapp3.0</TargetFramework>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="Prelude.fs" />
+    <Compile Include="Model.fs" />
+    <Compile Include="Abstractions.fs" />
+    <Compile Include="Writer.fs" />
+    <Compile Include="Constructs.fs" />
+    <Compile Include="Program.fs" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="FSharpPlus" Version="1.1.0-CI00271" />
+  </ItemGroup>
+</Project>
