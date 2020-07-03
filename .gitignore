@@ -2,6 +2,9 @@
 .fake
 .ionide
 
+.DS_STORE
+.idea
+
 # Created by https://www.gitignore.io/api/rider,fsharp,dotnetcore
 # Edit at https://www.gitignore.io/?templates=rider,fsharp,dotnetcore
 
