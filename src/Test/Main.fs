@@ -3,11 +3,10 @@ module Test
 open Expecto
 
 [<Tests>]
-let tests = testList "Structure-Generator" [
-    Tests.tests
-    Tests.CommandCompiler.tests
-    Writer.tests
-]
+let tests =
+    testList
+        "Structure-Generator"
+        [ Writer.tests ]
 
 [<EntryPoint>]
 let main argv =

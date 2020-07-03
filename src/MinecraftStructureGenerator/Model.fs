@@ -27,14 +27,15 @@ let inline _coord f { Coord = a; Kind = b; State = c } = f a <&> fun a' -> { Coo
 let inline _kind  f { Coord = a; Kind = b; State = c } = f b <&> fun b' -> { Coord = a;  Kind = b'; State = c  }
 let inline _state f { Coord = a; Kind = b; State = c } = f c <&> fun c' -> { Coord = a;  Kind = b;  State = c' }
 
-type Blocks = { UnBlocks: Block list }
+type Blocks = { Blocks: Block list }
+let inline blocks b = b.Blocks
 
 module Blocks =
     let zero : unit -> Blocks = fun _ ->
-        { UnBlocks = [{ Coord = { x = 0; y = 0; z = 0; }; Kind = Air; State = None }]}
+        { Blocks = [{ Coord = { x = 0; y = 0; z = 0; }; Kind = Air; State = None }]}
 
     let mapBlocks : (Block -> Block) -> Blocks -> Blocks = fun f blocks ->
-        { UnBlocks = blocks.UnBlocks |> List.map f }
+        { Blocks = blocks.Blocks |> List.map f }
 
     let makeBlocks : Coord list -> Kind -> Block list = fun coords kind ->
         coords |> List.map (fun x -> { Coord = x; Kind = kind; State = None })

@@ -4,9 +4,11 @@ open Model
 
 // Command should be enriched in the future - Type, relative vs absolute ... etc.
 type Command = Command of string
+let unCommand (Command c) = c
+
 type CommandStream = Command list
 
-type Comandify = Blocks -> Command list
-type CommandFormatter = Command list -> CommandStream
+type Commandify = Block -> Command
+type Streamify = Command -> CommandStream
 
-type Writer = CommandStream -> unit IO
+type Writer = CommandStream -> unit Async
