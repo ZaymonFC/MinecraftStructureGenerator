@@ -2,10 +2,11 @@ module Test
 
 open Expecto
 
-
 [<Tests>]
-let tests = testList "CX-Data-Insights" [
+let tests = testList "Structure-Generator" [
     Tests.tests
+    Tests.CommandCompiler.tests
+    Writer.tests
 ]
 
 [<EntryPoint>]

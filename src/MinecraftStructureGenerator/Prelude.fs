@@ -1,6 +1,11 @@
 [<AutoOpen>]
 module Minecraft.Prelude
-// This module exposes constructs within all Minecraft.* modules
+open System
 
-type IO<'t> = IO of 't
-type AsyncIO<'t> = Async<'t>
+module String =
+    let lines delimeter (s: string) : string list =
+        s.Split(delimeter |> Array.singleton) |> List.ofArray
+
+    let unlines =
+        List.reduce (fun (s1: string) (s2: string) -> sprintf "%s\n%s" s1 s2)
+
